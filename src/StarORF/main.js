@@ -1,5 +1,4 @@
-define([ "StarORF/aminoacids", 'jquery', 'jquery-ui', 'css!jquery-ui-css', 'css!StarORF/main'], function (AminoAcids, $) {
-    window.starORF_jQuery_debug = $
+define([ "StarORF/aminoacids", "StarORF/config", 'jquery', 'jquery-ui', 'css!jquery-ui-css', 'css!StarORF/main'], function (AminoAcids, orf_config, $) {
     var config = {};
     var decodedForward = null;
     var decodedReverse = null;
@@ -8,7 +7,7 @@ define([ "StarORF/aminoacids", 'jquery', 'jquery-ui', 'css!jquery-ui-css', 'css!
     var orf = {};
 
     function is_defined(element) {
-        return !(typeof variable === 'undefined');
+        return !(typeof element === 'undefined');
     }
 
     function get_config(config_obj, key, default_value) {
@@ -16,6 +15,8 @@ define([ "StarORF/aminoacids", 'jquery', 'jquery-ui', 'css!jquery-ui-css', 'css!
     }
 
     function parse_config(config_obj) {
+
+        orf_config.parse(config_obj,config);
         config.element_id = config_obj.element_id;
         config.sequence = config_obj.sequence ? config_obj.sequence : "/StarORF/sequence.txt";
 
